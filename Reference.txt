@@ -1,0 +1,9 @@
+=COUNTIF(G1:G647054,"NaN")
+
+Total number of missing entries in A
+Total number of missing entries in B
+Total number of missing entries in C
+Total number of missing entries in D 4129
+Total number of missing entries in E 
+Total number of missing entries in F
+Total number of missing entries in G 4129
