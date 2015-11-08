@@ -1,7 +1,7 @@
 %% this file is for prepocessing the data
 
 % read from excel
-[num,txt,raw] = xlsread('train-new-new.csv'); // file in the same folder
+[num,txt,raw] = xlsread('train-new-new.csv');  %file in the same folder
 [m,n]=size(num);
 for i=1:m
 
