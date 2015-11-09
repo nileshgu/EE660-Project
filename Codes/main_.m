@@ -1,10 +1,10 @@
 %% The main m file
 
 %% data process
-dataPreprocess;
+FeatureExtraction;
 
 %% learning algorithm
-ts_analysis;
+ml_Forest;
 
 %% performance evaluation 
 

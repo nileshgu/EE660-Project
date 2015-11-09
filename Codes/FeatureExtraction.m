@@ -19,8 +19,8 @@ NDepart = 70;
 % only department
 RawData = data;
 [M,N] = size(RawData);
-X_d = zeros(M,NDepart);
-Y_d = zeros(M,1);
+X = zeros(M,NDepart);
+y = zeros(M,1);
 visitNo = 0;
 ii_visit=0;   % index for visit
 
@@ -29,10 +29,10 @@ for ii = 1:M
         % add a new visit
         visitNo = RawData(ii,idx_visit);
         ii_visit = ii_visit+1;
-        X_d(ii_visit,:) = zeros(1,NDepart);
-        Y_d(ii_visit) = RawData(ii,idx_type);
+        X(ii_visit,:) = zeros(1,NDepart);
+        y(ii_visit) = RawData(ii,idx_type);
     end
-    X_d(ii_visit,RawData(ii,idx_depart)) = X_d(ii_visit,RawData(ii,idx_depart)) + 1;
+    X(ii_visit,RawData(ii,idx_depart)) = X(ii_visit,RawData(ii,idx_depart)) + 1;
 end
 
-save('../data/FeatureDataFromDepart.mat','X_d','Y_d');
+save('../data/FeatureDataFromDepart.mat','X','y');
