@@ -328,6 +328,11 @@ C=raw(1:m,1:7);
 
 data=cell2mat(C);
 
+% delete the NAN rows
+[rows,cols,vals] = find(data == 'NAN');
+data(rows,:)=[];
+
+
 %http://www.get-digital-help.com/2009/03/30/how-to-extract-a-unique-list-and-the-duplicates-in-excel-from-one-column/
 % Above link is helpful to know "How to extract a unique distinct list from
 % a column in excel"
