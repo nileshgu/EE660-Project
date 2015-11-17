@@ -1,7 +1,7 @@
 % The main m file
 
 %% data process
-load('../data/FeatureDataFromDepart.mat');;
+load('../data/FeatureDataFromDepartAndDate.mat');
 
 %%
 % learning algorithm
