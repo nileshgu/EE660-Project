@@ -18,7 +18,9 @@ X_test = X(idx2+1:end,:);y_test = y(idx2+1:end);
 %% performance evaluation 
 
 
-model = svmFit(X_preTrain, y_preTrain);
+%model = svmFit(X_preTrain, y_preTrain);
+model = svmFit(X_preTrain, y_preTrain, 'kernel', 'rbf', 'kernelParam', [0.1, 0.5, 1, 5], 'C', logspace(-1,1,10));
+%save svmModel.mat model;
 yhat  = svmPredict(model, X_preTrain);
 
 
