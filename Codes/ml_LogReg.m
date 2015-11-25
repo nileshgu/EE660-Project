@@ -23,3 +23,7 @@ fprintf('Error rate using raw features: %2.f%%\n', 100*errorRate);
 % title('linear');
 % printPmtkFigure('logregXorLinear')
 toc;
+
+%% evaluate the output
+yClasses = unique(y_preTrain);
+lossEvalFcn(p,y_preTrain,yClasses)
