@@ -25,6 +25,11 @@ for i=1:M
      assignin('base', sprintf('X%d', i), a);
 end
 
-        
+for i=1:38
+answer=strcat('X',int2str(i));
+save('../data/ClassWiseData.mat','answer');
+end
+
+
 
 
