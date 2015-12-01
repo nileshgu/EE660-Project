@@ -35,7 +35,7 @@ load('../Data/proportionalData.mat'); %,'XpreTr','ypreTr','XpreTe','ypreTe')
 
 %model = svmFit(X_preTrain, y_preTrain);
 %model = svmFit(X_preTrain, y_preTrain, 'kernel', 'rbf','kernelParam',[0.1, 0.5, 1, 5], 'C', logspace(-1,1,10));
-model = svmFit(XpreTr, ypreTr, 'kernel', 'rbf', 'kernelParam', [0.1, 0.5, 1, 5], 'C', logspace(-1,2,5)); % Eout going up, Ein going down
+model = svmFit(XpreTr, ypreTr, 'kernel', 'rbf', 'kernelParam', [0.1, 0.5, 1, 5], 'C',logspace(-1,1,10)); % Eout going up, Ein going down
 %save svmModelpreSTrain.mat model;
 yhatnew  = svmPredict(model, XpreTe);
 yhat  = svmPredict(model, XpreTr);

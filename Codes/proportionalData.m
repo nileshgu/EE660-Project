@@ -10,8 +10,8 @@ load('../data/ClassWiseData.mat');
 XpreTrain=zeros(1,q1+1);
 Xpre=zeros(1,q1+1);
 ypreTrain=zeros(1,1);
-noData=2000;
-noTraining=1500;
+noData=9000;
+noTraining=7000;
 
 
  for i=1:38
