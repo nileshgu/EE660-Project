@@ -1,29 +1,28 @@
-%% data process
-load('../data/FeatureDataFromDepartAndDate.mat');
+
+% load data
+clear;clc;close all;
+load('../Data/FourFoldData.mat');
 
 %%
 % learning algorithm
 % TODO: logistic regression here
-
-% split the data into three sets
-[m,n]=size(X);
-idx1 = floor(m/3);
-idx2 = floor(2*m/3);
-X_preTrain = X(1:idx1,:);y_preTrain = y(1:idx1,:);
-X_train = X(idx1+1:idx2,:);y_train = y(idx1+1:idx2,:);
-X_test = X(idx2+1:end,:);y_test = y(idx2+1:end,:);
-
 %% logistic regression
 tic;
 model = logregFit(X_preTrain, y_preTrain);
-[yhat, p] = logregPredict(model, y_preTrain);
+[yhat, p] = logregPredict(model, X_preTrain);
+[yhat_test, p_out] = logregPredict(model, X_preTest);
 errorRate = mean(yhat ~= y_preTrain);
 fprintf('Error rate using raw features: %2.f%%\n', 100*errorRate);
-% plotDecisionBoundary(X, y, @(X)logregPredict(model, X));
-% title('linear');
-% printPmtkFigure('logregXorLinear')
+errorRate_out = mean(yhat_test ~= y_preTest);
+fprintf('Error rate using raw features: %2.f%%\n', 100*errorRate_out);
+
 toc;
 
 %% evaluate the output
-yClasses = unique(y_preTrain);
-lossEvalFcn(p,y_preTrain,yClasses)
+lossEvalFcn(p,y_preTrain)
+lossEvalFcn(p_out,y_preTest)
+
+% evaluate the overall data
+[yhat_out, p_out] = logregPredict(model, X_test);
+errorRate_out = mean(yhat_out ~= y_test);
+lossEvalFcn(p_out,y_test)

@@ -6,16 +6,16 @@ load('../Data/twoFoldData.mat');
 
 %% performance evaluation 
 
-
-model = svmFit(XTr, yTr), 
-yhatnew  = svmPredict(model, Xt);
-yhat  = svmPredict(model, XTr);
-
-
-%% yield the output and calculate the error
-
-error = mean(yhatnew ~= yt);
-inerror = mean(yhat ~= yTr); %error =0.5610,inerror =0.3582
+% 
+% model = svmFit(XTr, yTr), 
+% yhatnew  = svmPredict(model, Xt);
+% yhat  = svmPredict(model, XTr);
+% 
+% 
+% %% yield the output and calculate the error
+% 
+% error = mean(yhatnew ~= yt);
+% inerror = mean(yhat ~= yTr); %error =0.5610,inerror =0.3582
 
 %% random assignment
 

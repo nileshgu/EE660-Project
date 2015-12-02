@@ -1,0 +1,14 @@
+%% data process
+load('../data/FeatureDataFromDepartAndDate.mat');
+
+%% split the data into three sets
+% this will be only execute once;
+[m,n]=size(X);
+ii = randperm(m);
+idx1 = 7000;
+idx2 = 3000;
+idx3 = floor(2*m/3);
+X_preTrain = X(ii(1:idx1),:);y_preTrain = y(ii(1:idx1),:);
+X_preTest = X(ii(idx1+1:idx2),:);y_preTest = y(ii(idx1+1:idx2),:);
+X_train = X(ii(idx2+1:idx3),:);y_train = y(ii(idx2+1:idx3),:);
+X_test = X(ii(idx3+1:end),:);y_test = y(ii(idx3+1:end),:);
