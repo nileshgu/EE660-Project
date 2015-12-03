@@ -17,8 +17,14 @@ load('../Data/twoFoldData.mat');
 % error = mean(yhatnew ~= yt);
 % inerror = mean(yhat ~= yTr); %error =0.5610,inerror =0.3582
 
+%% extend the yhat to probs matrix y_probs
+y_probs=convert_yhat_to_yprobs(yhatnew);
+% evaluate the probs
+lossEvalFcn(y_probs,yt);
+
 %% random assignment
 
 a=unique(yTr);
 b=datasample(a,14445);
 errorRandom = mean(b ~= yt); %errorRandom =0.9735
+
