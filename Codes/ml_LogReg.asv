@@ -6,28 +6,24 @@ load('../Data/FourFoldData.mat');
 %%
 % learning algorithm
 % TODO: logistic regression here
+X_preTrain = X_preTrain()
 %% logistic regression
 tic;
 model = logregFit(X_preTrain, y_preTrain);
 [yhat, p] = logregPredict(model, X_preTrain);
-[yhat_out, p_out] = logregPredict(model, X_preTest);
+[yhat_test, p_out] = logregPredict(model, X_preTest);
 errorRate = mean(yhat ~= y_preTrain);
 fprintf('Error rate using raw features: %2.f%%\n', 100*errorRate);
-errorRate_out = mean(yhat_out ~= y_preTest);
+errorRate_out = mean(yhat_test ~= y_preTest);
 fprintf('Error rate using raw features: %2.f%%\n', 100*errorRate_out);
 
-% plotDecisionBoundary(X, y, @(X)logregPredict(model, X));
-% title('linear');
-% printPmtkFigure('logregXorLinear')
 toc;
 
 %% evaluate the output
-yClasses = unique(y_preTrain);
-lossEvalFcn(p,y_preTrain,yClasses)
-yClasses = unique(y_preTest);
-lossEvalFcn(p_out,y_preTest,yClasses)
+lossEvalFcn(p,y_preTrain)
+lossEvalFcn(p_out,y_preTest)
 
+% evaluate the overall data
 [yhat_out, p_out] = logregPredict(model, X_test);
 errorRate_out = mean(yhat_out ~= y_test);
-yClasses = unique(y_preTest);
-lossEvalFcn(p_out,y_preTest,yClasses)
+lossEvalFcn(p_out,y_test)

@@ -5,7 +5,9 @@ load('../Data/FourFoldData.mat');
 
 %%
 % learning algorithm
-% TODO: logistic regression here
+X_preTrain = X_preTrain(:,1:70);
+X_preTest = X_preTest(:,1:70);
+X_test = X_test(:,1:70);
 %% logistic regression
 tic;
 model = logregFit(X_preTrain, y_preTrain);
