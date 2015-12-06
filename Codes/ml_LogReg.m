@@ -1,7 +1,7 @@
 
 % load data
 clear;clc;close all;
-load('../Data/proportionalData.mat');
+load('../Data/TwoFoldData.mat');
 
 %%
 % % learning algorithm
