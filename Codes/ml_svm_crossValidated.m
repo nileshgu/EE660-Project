@@ -21,12 +21,12 @@ i=1;
 
         
 [model, bestParam, mu, se] = svmFit(X_train, y_train, 'kernel', 'rbf','kernelParam', [0.1, 0.5, 1, 5], 'C',logspace(-1,2,4));
-yhat_test  = svmPredict(model, X_train);
 
 
 %% yield the output and calculate the error
-
-error(i) = mean(yhat_test ~= y_test);
-i=i+1;
-
-
+figure;
+[CC lambda]=meshgrid(log(C),log(kernelParam));
+mesh(CC,lambda,reshape(mu,length(CC),length(kernelParam)));
+xlabel('C');
+ylabel('\lambda');
+zlabel('mean error');
