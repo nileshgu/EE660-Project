@@ -22,6 +22,6 @@ end
 
 figure;
 plot(1:38,errorRates,'bo-',1:38,errorRates_rand,'r*-');
-legend('error rate using logistic regression','error rate using randomly assignment');
+legend('error rate using SVM model','error rate using randomly assignment');
 xlabel('class number');
 ylabel('error rate');

@@ -7,15 +7,29 @@ load('../Data/TwoFoldData.mat');
 
 %% performance evaluation 
 tic;
-model = svmFit(X_train, y_train, 'kernel', 'rbf', 'kernelParam', [0.1, 0.5, 1, 5], 'C',logspace(-1,2,4)); % Eout going up, Ein going down
+model = svmFit(X_train, y_train) %, 'kernel', 'rbf', 'kernelParam', [0.1, 0.5, 1, 5], 'C',logspace(-1,2,4)); % Eout going up, Ein going down
 yhat_test  = svmPredict(model, X_test);
 yhat  = svmPredict(model, X_train);
 time_costed = toc;
-save('../Data/svmModelFinalRandom');
+save('../Data/svmModelNoParamRandom');
 
-%% yield the output and calculate the error
+% %% yield the output and calculate the error
+% % 
 % 
+% 
+% error = mean(yhat_test ~= y_test)
+% inerror = mean(yhat ~= y_train)
 
+clc; clear all; close all;
 
-error = mean(yhat_test ~= y_test)
-inerror = mean(yhat ~= y_train)
+load('../Data/proportionalData.mat');
+
+% learning algorithm
+
+%% performance evaluation 
+tic;
+model = svmFit(X_train, y_train) %, 'kernel', 'rbf', 'kernelParam', [0.1, 0.5, 1, 5], 'C',logspace(-1,2,4)); % Eout going up, Ein going down
+yhat_test  = svmPredict(model, X_test);
+yhat  = svmPredict(model, X_train);
+time_costed = toc;
+save('../Data/svmModelNoParamProportional');
