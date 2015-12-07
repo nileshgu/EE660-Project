@@ -57,7 +57,7 @@ yTr=Xtrain(:,78);
 Xt=XTest(:,(1:77));
 yt=XTest(:,78);
 
-save('../Data/twoFoldData.mat','XTr','yTr','Xt','yt')%,'Xtest','ytest');
+%save('../Data/twoFoldData.mat','XTr','yTr','Xt','yt')%,'Xtest','ytest');
 
 
 
