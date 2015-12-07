@@ -1,7 +1,7 @@
 % evaluate the error for each class
 
 
-[yhat_test, p_out] = logregPredict(model, X_test);
+% [yhat_test, p_out] = logregPredict(model, X_test);
 y_true = y_test;
 classes = unique(y_true);
 yhat = yhat_test;%classes(randi(38,length(y_test),1));
