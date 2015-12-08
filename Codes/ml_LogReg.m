@@ -20,35 +20,12 @@ load('../Data/TwoFoldData.mat');
 
 %% fit
 tic;
-fitFn = @(X_train,y_train,lambda)logregFit(X_train,y_train,'lambda',lambda,'regType','L2');
+model = logregFit(X_train,y_train);
 predictFn = @(model, X)logregPredict(model, X);
 lossFn = @(yhat, ytest)zeroOneLossFn(yhat, ytest);
-params = logspace(-2,1,10);
-Nfolds = 3;
 
-% standardize
-[model, bestParam, mu, se] = ...
-    fitCv(params, fitFn, predictFn, lossFn, X_train, y_train,  Nfolds);
-err_train = sum(zeroOneLossFn(logregPredict(model,X_train),y_train))/length(y_train)
-err_test = sum(zeroOneLossFn(logregPredict(model,X_test),y_test))/length(y_test)
-bestParam
+err_train = sum(zeroOneLossFn(logregPredict(model,X_train),y_train))/length(y_train);
+err_test = sum(zeroOneLossFn(logregPredict(model,X_test),y_test))/length(y_test);
+
 
 toc;
-
-%% plot cross validation
-figure;
-semilogx(params,mu,'o-');
-xlabel('\lambda');
-ylabel('mean loss');
-
-%% evaluate the output
-lossEvalFcn(p,y_train)
-lossEvalFcn(p_out,y_test)
-
-% evaluate the overall data
-[yhat_out, p_out] = logregPredict(model, X_test);
-errorRate_out = mean(yhat_out ~= y_test);
-lossEvalFcn(p_out,y_test)
-
-% plot the error rates
-plot_logreg;
