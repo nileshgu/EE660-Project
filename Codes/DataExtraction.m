@@ -1,7 +1,7 @@
 %% this file is for prepocessing the data
 
 % read from excel
-[num,txt,raw] = xlsread('train-new-new.csv');  %file in the same folder
+[num,txt,raw] = xlsread('../data/test.csv');  %file in the same folder
 [m,n]=size(num);
 for i=1:m
 
@@ -329,8 +329,8 @@ C=raw(1:m,1:7);
 data=cell2mat(C);
 
 % delete the NAN rows
-[rows,cols,vals] = find(data == 'NAN');
-data(rows,:)=[];
+%data = data(all(~isnan(data),2),:);
+ save('../data/testData.mat','data');
 
 
 %http://www.get-digital-help.com/2009/03/30/how-to-extract-a-unique-list-and-the-duplicates-in-excel-from-one-column/

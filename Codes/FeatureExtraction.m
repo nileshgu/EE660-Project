@@ -4,7 +4,8 @@
 % or directly use the matlab TS function
 
 % load raw data
-load('../data/RawData.mat');
+%load('../data/RawData.mat');
+load('../data/testData.mat');
 
 %% 
 idx_type = 1;
@@ -36,7 +37,7 @@ for ii = 1:M
 end
 X(ii_visit+1:end,:)=[];
 y(ii_visit+1:end,:)=[];
-save('../data/FeatureDataFromDepart.mat','X','y');
+
 
 %% add time features
 
@@ -70,4 +71,5 @@ for ii = 1:M
 end
 X(ii_visit+1:end,:)=[];
 y(ii_visit+1:end,:)=[];
-save('../data/FeatureDataFromDepartAndDate.mat','X','y');
+%save('../data/FeatureDataFromDepartAndDate.mat','X','y');
+save('../data/test-1FeatureDataFromDepart.mat','X');
