@@ -50,6 +50,27 @@ X=sparse(I,J,S,ii_visit,length(class_line));
 y(ii_visit+1:end,:)=[];
 save('../data/FeatureDataFromLine.mat','X','y');
 
+
+%% decomposit the department into X folds
+[cc,ia,ic]=unique(data(:,end));
+line_depart= [ cc data(ia,idx_depart)];
+[ccc,iaa, icc]=unique(line_depart(:,2));
+
+no_fold = 5;
+line_feature = [];
+featureID = 0;
+for ii = 1:length(ccc)
+    tmp = find(line_depart(:,2)==ccc(ii));
+    n_lines = floor(length(tmp)/no_fold);
+    tmp_idx = 1:n_lines:length(tmp);
+    for jj = tmp_idx(1:end-1);
+        featureID = featureID + 1;
+        line_feature(end,:)=[line_depart(tmp(jj:jj+n_lines-1),1) featureID*ones(n_lines,1)];
+    end
+    line_feature(end,:)=[line_depart(tmp(tmp_idx(end-1)+1:end),1) featureID*ones(length(tmp(tmp_idx(end-1)+1:end)),1)];
+end
+
+
 %% add time features
 
 idx_type = 1;
@@ -83,3 +104,4 @@ end
 X(ii_visit+1:end,:)=[];
 y(ii_visit+1:end,:)=[];
 save('../data/FeatureDataFromDepartAndDate.mat','X','y');
+

@@ -21,6 +21,7 @@ load('../Data/TwoFoldData.mat');
 %% fit
 tic;
 model = logregFit(X_train,y_train);
+toc;
 predictFn = @(model, X)logregPredict(model, X);
 lossFn = @(yhat, ytest)zeroOneLossFn(yhat, ytest);
 

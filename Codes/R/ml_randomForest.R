@@ -21,4 +21,10 @@ save.image("iris.rf");
 iris.rf_500 = h2o.randomForest(y = 78, x = c(1:77), training_frame = train.hex, nfolds = 2, ntrees = 500, max_depth = 100,mtries=-1)
 save.image("iris.rf");
 
-h2o.perfor
+iris.rf_tree25 = h2o.randomForest(y = 78, x = c(1:77), training_frame = train.hex[1:10000,], nfolds = 2, ntrees = 250, max_depth = 25,mtries=-1)
+iris.rf_tree50  = h2o.randomForest(y = 78, x = c(1:77), training_frame = train.hex[1:10000,], nfolds = 2, ntrees = 250, max_depth = 50,mtries=-1)
+iris.rf_tree100  = h2o.randomForest(y = 78, x = c(1:77), training_frame = train.hex[1:10000,], nfolds = 2, ntrees = 250, max_depth = 100,mtries=-1)
+iris.rf_tree200  = h2o.randomForest(y = 78, x = c(1:77), training_frame = train.hex[1:10000,], nfolds = 2, ntrees = 250, max_depth = 200,mtries=-1)
+iris.rf_tree400  = h2o.randomForest(y = 78, x = c(1:77), training_frame = train.hex[1:10000,], nfolds = 2, ntrees = 250, max_depth = 400,mtries=-1)
+
+

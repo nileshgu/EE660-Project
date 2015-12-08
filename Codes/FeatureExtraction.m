@@ -73,3 +73,4 @@ X(ii_visit+1:end,:)=[];
 y(ii_visit+1:end,:)=[];
 %save('../data/FeatureDataFromDepartAndDate.mat','X','y');
 save('../data/test-1FeatureDataFromDepart.mat','X');
+
