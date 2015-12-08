@@ -1,7 +1,10 @@
 % evaluate the error for each class
 
 
-% [yhat_test, p_out] = logregPredict(model, X_test);
+load('../Data/svmModelFinalRandom.mat');
+
+yhat_test =  svmPredict(model, X_test);
+
 y_true = y_test;
 classes = unique(y_true);
 yhat = yhat_test;%classes(randi(38,length(y_test),1));
@@ -22,6 +25,6 @@ end
 
 figure;
 plot(1:38,errorRates,'bo-',1:38,errorRates_rand,'r*-');
-legend('error rate using SVM model','error rate using randomly assignment');
+legend('error rate using SVM model','error rate using proportionally assignment');
 xlabel('class number');
 ylabel('error rate');
