@@ -23,18 +23,18 @@ tic;
 fitFn = @(X_train,y_train,lambda)logregFit(X_train,y_train,'lambda',lambda,'regType','L2');
 predictFn = @(model, X)logregPredict(model, X);
 lossFn = @(yhat, ytest)zeroOneLossFn(yhat, ytest);
-params = logspace(-2,1,10);
+params = logspace(-2,1,5);
 Nfolds = 3;
 
 % standardize
 [model, bestParam, mu, se] = ...
     fitCv(params, fitFn, predictFn, lossFn, X_train, y_train,  Nfolds);
+save logreg_cv_77feature.mat;
 err_train = sum(zeroOneLossFn(logregPredict(model,X_train),y_train))/length(y_train)
 err_test = sum(zeroOneLossFn(logregPredict(model,X_test),y_test))/length(y_test)
 bestParam
 
 toc;
-
 %% plot cross validation
 figure;
 semilogx(params,mu,'o-');
