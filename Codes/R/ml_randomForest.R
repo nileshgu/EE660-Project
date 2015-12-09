@@ -5,8 +5,11 @@
 library(h2o)
 h2o.init()
 
-train.hex = h2o.uploadFile(path = system.file("extdata", "trainData.csv", package="h2o"), destination_frame = "train.hex")
+train.hex = h2o.uploadFile(path = system.file("extdata", "trainData_large.csv", package="h2o"), destination_frame = "train.hex")
 summary(train.hex)
+
+iris.rf = h2o.randomForest(y = 424, x = c(1:423), training_frame = train.hex, nfolds = 2, ntrees = 250, max_depth = 100,mtries=-1)
+save.image("iris.rf");
 
 test.hex = h2o.uploadFile(path = system.file("extdata", "testData.csv", package="h2o"), destination_frame = "test.hex")
 summary(test.hex)

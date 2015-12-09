@@ -5,6 +5,7 @@ figure;
 semilogx(ntrees,mse,'o-');
 xlabel('number of trees in random forest');
 ylabel('mean loss error rate');
+title('means loss vs. depth limitation of a tree (N_data = 70000,Max_depth = 100)');
 
 
 % max depth
@@ -14,3 +15,4 @@ figure;
 semilogx(depth,errors,'o-');
 xlabel('depth limitation of a tree');
 ylabel('mean loss error rate');
+title('means loss vs. depth limitation of a tree (N_data = 10000,N_tree = 250)');

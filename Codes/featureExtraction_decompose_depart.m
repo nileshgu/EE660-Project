@@ -1,6 +1,6 @@
 %% 
 % load raw data
-load('../data/RawData.mat');
+load('../data/testData.mat');
 %% decomposit the department into X folds
 idx_type = 1;
 idx_visit = 2;
